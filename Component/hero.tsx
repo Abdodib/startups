@@ -1,4 +1,3 @@
-// Hero.tsx
 type HeroProps = {
   yellow?: string;
   black: string;
