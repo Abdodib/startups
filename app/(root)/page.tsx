@@ -8,12 +8,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
     {
       _createdAt: new Date(),
       views : 55,
-      author : { _id:1},
+      author : { _id:1, name: 'brian' },
       _id : 1,
       description : 'This is a sample description',
       image : '/logo.png',
       category : 'robot',
-      title : 'robot'
+      title : 'we robot'
     },
   ];
   return (
@@ -28,7 +28,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
         <p className="text-30-semibold ml-2 mt-2">
           {query ? `Search results for "${query}"` : "All Startups"}
         </p>
-        <ul className=" card-grid m-7">
+        <ul className=" grid m-7">
           {
             posts.length > 0 ? (
               posts.map((post : StartupCardType ) => (

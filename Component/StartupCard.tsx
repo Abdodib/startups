@@ -1,20 +1,56 @@
 import React from 'react'
 import { formaDate } from '@/lib/utils'
 import { EyeIcon } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
 const StartupCard = ({post} : {post : StartupCardType}) => {
+    const {_createdAt, views, author:{_id:authorId , name}, _id, description, image, category, title} = post;
   return (
     <li className=' startup-card group'>
         <div className="flex-between">
             <p className="startup_card_date">
-                {formaDate(post._createdAt)}
+                {formaDate(_createdAt)}
             </p>
             <div className="flex gap-1.5">
-                <EyeIcon className="size-6" style={{ color: '#EE2B6' }} />
+                <EyeIcon className="size-6 text-[#EE2B69]" />
                 <span className=' text-16-medium'>
-                    {post.views}
+                    {views}
                 </span>
 
             </div>
+        </div>
+        <div className=' flex-between mt-5 gap-5'>
+            <div className='flex-1'>
+                <Link href={`/user/${authorId}`}>
+                <p className=' text-16-medium line-clamp-1'>{name}</p>
+                </Link>
+                <Link href={`/startup/${_id}`}>
+                <h3 className=' text-26-semibold  line-clamp-1 '>
+                    {title}
+                </h3>
+                </Link>
+            </div>
+                <Link href={`/user/${authorId}`}>
+                <Image src="https://placeholder.co/48x48" alt="placeholder" height={48} width={48} className=' rounded-full'/>
+                </Link>
+        </div>
+        <Link href={`/startup/${_id}`}>
+        <p className=' startup-card_description mt-4 line-clamp-3'>
+            {description}
+        </p>
+        <img src={image} alt="" className=' startup-card_img'/>
+        </Link>
+        <div className="flex-between gap-3 mt-5">
+            <Link href={`/?query=${category.toLowerCase()}`} >
+                <p className=' text-16-medium'>
+                    {category}
+                </p>
+            </Link>
+            <button className=' startup-card_btn'>
+                <Link href={`/startup/${_id}`}>
+                    View Details
+                </Link>
+            </button>
         </div>
     </li>
   )
