@@ -1,10 +1,14 @@
 import StartupCard from "@/Component/StartupCard";
 import Hero from "../../Component/hero";
+import { client } from "@/sanity/lib/client";
+import { startups_query } from "@/sanity/lib/queries";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const params = await searchParams; // unwrap the promise
   const query = params?.query || '';
-  const posts  = [
+  const posts = await client.fetch(startups_query);
+  
+ /* const posts  = [
     {
       _createdAt: new Date(),
       views : 55,
@@ -15,7 +19,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
       category : 'robot',
       title : 'we robot'
     },
-  ];
+  ];*/
   return (
     <>
       <Hero

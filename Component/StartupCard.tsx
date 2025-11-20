@@ -4,7 +4,7 @@ import { EyeIcon } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 const StartupCard = ({post} : {post : StartupCardType}) => {
-    const {_createdAt, views, author:{_id:authorId , name}, _id, description, image, category, title} = post;
+    const {_createdAt, views, author:{_id:authorId , name ,image : authorImage}, _id, description, image, category, title} = post;
   return (
     <li className=' startup-card group'>
         <div className="flex-between">
@@ -31,7 +31,7 @@ const StartupCard = ({post} : {post : StartupCardType}) => {
                 </Link>
             </div>
                 <Link href={`/user/${authorId}`}>
-                <Image src="https://placeholder.co/48x48" alt="placeholder" height={48} width={48} className=' rounded-full'/>
+                <Image src={authorImage} alt="placeholder" height={48} width={48} className=' rounded-full'/>
                 </Link>
         </div>
         <Link href={`/startup/${_id}`}>
