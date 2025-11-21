@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { formaDate } from '@/lib/utils'
 import { EyeIcon } from 'lucide-react'
