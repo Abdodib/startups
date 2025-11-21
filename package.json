@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "predev": "npm run typegen",
-  "prebuild": "npm run typegen",
-  "typegen": "sanity schema extract --enforce-required-fields --path=./sanity/extract.json && sanity typegen generate"
+    "prebuild": "npm run typegen",
+    "typegen": "sanity schema extract --enforce-required-fields --path=./sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
     "@sanity/image-url": "^1.2.0",
@@ -25,6 +25,7 @@
     "react-dom": "19.2.0",
     "sanity": "^4.16.0",
     "sanity-plugin-markdown": "^6.0.0",
+    "server-only": "^0.0.1",
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7"

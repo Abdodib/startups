@@ -2,24 +2,16 @@ import StartupCard, { StartupCardType } from "@/Component/StartupCard";
 import Hero from "../../Component/hero";
 import { client } from "@/sanity/lib/client";
 import { startups_query } from "@/sanity/lib/queries";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
-  const params = await searchParams; // unwrap the promise
-  const query = params?.query || '';
-  const posts = await client.fetch(startups_query);
-  
- /* const posts  = [
-    {
-      _createdAt: new Date(),
-      views : 55,
-      author : { _id:1, name: 'brian' },
-      _id : 1,
-      description : 'This is a sample description',
-      image : '/logo.png',
-      category : 'robot',
-      title : 'we robot'
-    },
-  ];*/
+
+
+  const query = (await searchParams).query || '';
+  const params = { search : query || null };
+  const {data: posts} = await sanityFetch({query : startups_query , params});
+
+
   return (
     <>
       <Hero
@@ -45,6 +37,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
         </ul>
 
       </section>
+    <SanityLive />
     </>
   );
 }
