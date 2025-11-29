@@ -6,11 +6,16 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*"
-      }
-    ]
+        hostname: "*",
+      },
+    ],
   },
+
   reactCompiler: true,
+
+  experimental: {
+    cacheComponents: true,
+  },
 };
 
 export default nextConfig;
